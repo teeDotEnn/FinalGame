@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Tim/repos/PROG2370/AllInOne/AllInOne/Content/Fonts/HighlightFont.spritefont","C:/Users/Tim/repos/PROG2370/AllInOne/AllInOne/Content/bin/Windows/Fonts/HighlightFont.xnb","FontDescriptionProcessor","SpriteFontContent",2023,37905,0.2960669
+"C:/Users/Tim/repos/PROG2370/AllInOne/AllInOne/Content/Fonts/RegularFont.spritefont","C:/Users/Tim/repos/PROG2370/AllInOne/AllInOne/Content/bin/Windows/Fonts/RegularFont.xnb","FontDescriptionProcessor","SpriteFontContent",2018,37905,0.0370082
+"C:/Users/Tim/repos/PROG2370/AllInOne/AllInOne/Content/Images/Bat.png","C:/Users/Tim/repos/PROG2370/AllInOne/AllInOne/Content/bin/Windows/Images/Bat.xnb","TextureProcessor","Texture2DContent",1815,10693,0.2854252
+"C:/Users/Tim/repos/PROG2370/AllInOne/AllInOne/Content/Images/helpImage.png","C:/Users/Tim/repos/PROG2370/AllInOne/AllInOne/Content/bin/Windows/Images/helpImage.xnb","TextureProcessor","Texture2DContent",4090,1536085,0.0497255
