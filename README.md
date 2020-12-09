@@ -15,11 +15,15 @@ Final game for PROG2370
   
   [] Implement sound
   
-  [] Implement moving background
+  [X] Implement moving background
   
   [] Implement high score
 
+## CREDITS
 
+Explosion sound design - InspectorJ
+
+Music - Drakensson
 
 ## Classes required
 
