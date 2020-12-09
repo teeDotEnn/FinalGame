@@ -19,6 +19,7 @@ namespace finalGame
         private Explosion explosion;
         private Game game;
         private Texture2D explosionTex;
+        private SoundEffect explosionSound;
 
         public List<Bullet> BulletList { get => bulletList; set => bulletList = value; }
         public List<Alien> AlienList { get => alienList; set => alienList = value; }
@@ -31,6 +32,7 @@ namespace finalGame
             this.alienList = alienList;
 
             explosionTex = game.Content.Load<Texture2D>("Images/explosion");
+            explosionSound = game.Content.Load<SoundEffect>("Sounds/explosionSound");
             
             //game.Components.Add()
         }
@@ -56,6 +58,7 @@ namespace finalGame
                         AlienList.Remove(alien);
 
                         explosion = new Explosion(game, spriteBatch, explosionTex, alien.Position);
+                        explosionSound.Play();
                         game.Components.Add(explosion);
                         return;
 
