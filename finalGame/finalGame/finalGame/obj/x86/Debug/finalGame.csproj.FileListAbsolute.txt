@@ -30,3 +30,6 @@ D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\W
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\spaceInvaderWhite.xnb
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\bullet.xnb
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\explosion.xnb
+D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\hilightFont.xnb
+D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\regularFont.xnb
+D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\starsLight.xnb
