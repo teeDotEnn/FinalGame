@@ -21,6 +21,7 @@ namespace finalGame
         private Texture2D bulletTex;
         private Game game;
         private CollisionManager collisionManager;
+        public CollisionManager CollisionManager { get => collisionManager; set => collisionManager = value; }
 
         public ActionScene(Game game, SpriteBatch spriteBatch) : base(game)
         {

@@ -38,6 +38,14 @@ namespace finalGame
             //game.Components.Add()
         }
 
+        public void hide()
+        {
+            if (explosion != null)
+            {
+                explosion.Visible = false;
+                explosion.Enabled = false;
+            }
+        }
         
 
         public override void Update(GameTime gameTime)
