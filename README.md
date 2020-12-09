@@ -4,12 +4,19 @@ Final game for PROG2370
 ## TODO
 
   [] Implement alien behaviour
+    
     -Shooting
+    
     - movement
+    
     - armour
+  
   [] Implementing levels
+  
   [] Implement sound
+  
   [] Implement moving background
+  
   [] Implement high score
 
 
