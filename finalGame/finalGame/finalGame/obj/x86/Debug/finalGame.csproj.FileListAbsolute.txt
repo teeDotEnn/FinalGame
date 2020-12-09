@@ -65,3 +65,6 @@ C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\obj\x86\Debug\finalGa
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\obj\x86\Debug\finalGame.pdb
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Sounds\AllMusic.wma
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Sounds\AllMusic.xnb
+C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\starsLight.xnb
+C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\hilightFont.xnb
+C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\regularFont.xnb
