@@ -13,13 +13,17 @@ Final game for PROG2370
   
   [] Implementing levels
   
-  [] Implement sound
+  [X] Implement sound
   
-  [] Implement moving background
+  [X] Implement moving background
   
   [] Implement high score
 
+## CREDITS
 
+Explosion sound - "Explosion, 8-bit, 01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+
+Music - Drakensson
 
 ## Classes required
 
