@@ -34,6 +34,7 @@ namespace finalGame
             explosionTex = game.Content.Load<Texture2D>("Images/explosion");
             explosionSound = game.Content.Load<SoundEffect>("Sounds/explosionSound");
             
+            
             //game.Components.Add()
         }
 
@@ -58,6 +59,7 @@ namespace finalGame
                         AlienList.Remove(alien);
 
                         explosion = new Explosion(game, spriteBatch, explosionTex, alien.Position);
+                       
                         explosionSound.Play();
                         game.Components.Add(explosion);
                         return;

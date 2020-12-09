@@ -26,8 +26,7 @@ namespace finalGame
         {
             SpriteBatch = spriteBatch;
             this.game = game;
-            collisionManager = new CollisionManager(game, spriteBatch, ourBulletsList, alienList);
-            this.Components.Add(collisionManager);
+            
 
 
             Texture2D shipTex = game.Content.Load<Texture2D>("Images/shipCropped");
@@ -36,9 +35,22 @@ namespace finalGame
 
             alienTex = game.Content.Load<Texture2D>("Images/spaceInvaderGreen");
             // create a update method for creating aliens and adding them to the list
-            alien = new Alien(game, SpriteBatch, alienTex, new Vector2(Shared.stage.X / 2, Shared.stage.Y / 2));
+
+            /*
+              OLD ALIEN CODE
+             alien = new Alien(game, SpriteBatch, alienTex, new Vector2(Shared.stage.X / 2, Shared.stage.Y / 2));
+               
             this.Components.Add(alien);
             alienList.Add(alien);
+            */
+            alienList = generateAliens(1);
+            foreach(Alien alien in alienList)
+            {
+                this.Components.Add(alien);
+            }
+            //This needs to go here
+            collisionManager = new CollisionManager(game, spriteBatch, ourBulletsList, alienList);
+            this.Components.Add(collisionManager);
             Song song = game.Content.Load<Song>("Sounds/AllMusic");
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(song);
@@ -47,6 +59,25 @@ namespace finalGame
             
 
             bulletTex = game.Content.Load<Texture2D>("Images/bullet");
+        }
+
+        private List<Alien> generateAliens(int level)
+        {
+            List<Alien> aliens = new List<Alien>();
+            Vector2 location = new Vector2(Shared.stage.X / 4, Shared.stage.Y / 4);
+            for (int i = 0; i < 13; i++)
+            {
+                aliens.Add(new Alien(game, SpriteBatch, alienTex, location));
+                //Need a better way to increment rows
+                if(i == 3 || i == 7 || i == 11)
+                {
+                    location.X = (Shared.stage.X / 4);
+                    location.Y = (location.Y + alienTex.Height + 10);
+                }
+                location.X = location.X + alienTex.Width + 10;
+                
+            }
+            return aliens;
         }
 
         public override void Draw(GameTime gameTime)
