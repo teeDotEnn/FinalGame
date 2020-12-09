@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace finalGame
 {
@@ -38,6 +39,11 @@ namespace finalGame
             alien = new Alien(game, SpriteBatch, alienTex, new Vector2(Shared.stage.X / 2, Shared.stage.Y / 2));
             this.Components.Add(alien);
             alienList.Add(alien);
+            Song song = game.Content.Load<Song>("Sounds/AllMusic");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(song);
+            MediaPlayer.Volume = 0.5f;
+
             
 
             bulletTex = game.Content.Load<Texture2D>("Images/bullet");

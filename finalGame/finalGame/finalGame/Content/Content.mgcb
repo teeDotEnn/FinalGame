@@ -121,3 +121,15 @@
 /processorParam:TextureFormat=Color
 /build:Images/spaceInvaderWhite.png
 
+#begin Sounds/AllMusic.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/AllMusic.mp3
+
+#begin Sounds/explosionSound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/explosionSound.wav
+
