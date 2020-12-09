@@ -7,17 +7,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+
 namespace finalGame
 {
-    public class Alien : MyObject
+    public class Bullet : MyObject
     {
-        public Alien(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position) : base(game)
+        public Bullet(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position) : base(game)
         {
             SpriteBatch = spriteBatch;
             Tex = tex;
             Position = position;
-            // TO DO 
-            Speed = new Vector2(4, 0);
+            Speed = new Vector2(0,2);
         }
 
         public override void Draw(GameTime gameTime)
@@ -30,6 +30,7 @@ namespace finalGame
 
         public override void Update(GameTime gameTime)
         {
+            Position -= Speed;
             base.Update(gameTime);
         }
     }

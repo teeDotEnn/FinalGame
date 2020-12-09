@@ -11,14 +11,12 @@ namespace finalGame
 {
     public class Ship : MyObject
     {
-        private Vector2 speed;
-
         public Ship(Game game, SpriteBatch spriteBatch, Texture2D tex) : base(game)
         {
             SpriteBatch = spriteBatch;
             Tex = tex;
             Position = new Vector2(Shared.stage.X / 2 - tex.Width / 2, Shared.stage.Y - tex.Height);
-            speed = new Vector2(7, 0);
+            Speed = new Vector2(7, 0);
         }
 
         public override void Draw(GameTime gameTime)
@@ -34,7 +32,7 @@ namespace finalGame
             KeyboardState ks = Keyboard.GetState();
             if(ks.IsKeyDown(Keys.Right))
             {
-                Position += speed;
+                Position += Speed;
                 if(Position.X > (Shared.stage.X - Tex.Width))
                 {
                     //Position.X = Shared.stage.X - Tex.Width;
@@ -43,7 +41,7 @@ namespace finalGame
             }
             if(ks.IsKeyDown(Keys.Left))
             {
-                Position -= speed;
+                Position -= Speed;
                 if(Position.X < 0)
                 {
                     Position = new Vector2(0, Shared.stage.Y - Tex.Height);
