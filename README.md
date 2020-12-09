@@ -21,7 +21,7 @@ Final game for PROG2370
 
 ## CREDITS
 
-Explosion sound design - InspectorJ
+Explosion sound - "Explosion, 8-bit, 01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
 
 Music - Drakensson
 
