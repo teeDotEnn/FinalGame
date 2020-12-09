@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/bullet.png</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/explosion.png</File>
     <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/ship.png</File>
     <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/shipCropped.png</File>
     <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderBlue.png</File>
@@ -14,6 +15,7 @@
     <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderWhite.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

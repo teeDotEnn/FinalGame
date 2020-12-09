@@ -20,7 +20,6 @@ namespace finalGame
     /// </summary>
     public class Alien : MyObject
     {
-        private Vector2 speed;
         /// <summary>
         /// Instatiates a new alien object
         /// </summary>
@@ -48,6 +47,11 @@ namespace finalGame
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+        }
+
+        public Rectangle getBound()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, Tex.Width, Tex.Height);
         }
     }
 }

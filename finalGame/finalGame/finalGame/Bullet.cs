@@ -17,7 +17,7 @@ namespace finalGame
             SpriteBatch = spriteBatch;
             Tex = tex;
             Position = position;
-            Speed = new Vector2(0,2);
+            Speed = new Vector2(0,7);
         }
 
         public override void Draw(GameTime gameTime)
@@ -31,7 +31,16 @@ namespace finalGame
         public override void Update(GameTime gameTime)
         {
             Position -= Speed;
+            if(Position.Y < 0)
+            {
+                this.Enabled = false;
+            }
             base.Update(gameTime);
+        }
+
+        public Rectangle getBound()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, Tex.Width, Tex.Height);
         }
     }
 }
