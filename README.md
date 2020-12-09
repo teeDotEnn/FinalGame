@@ -13,7 +13,7 @@ Final game for PROG2370
   
   [] Implementing levels
   
-  [] Implement sound
+  [X] Implement sound
   
   [X] Implement moving background
   
