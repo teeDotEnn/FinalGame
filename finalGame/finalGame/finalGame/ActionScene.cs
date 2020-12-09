@@ -52,12 +52,6 @@ namespace finalGame
             //This needs to go here
             collisionManager = new CollisionManager(game, spriteBatch, ourBulletsList, alienList);
             this.Components.Add(collisionManager);
-            Song song = game.Content.Load<Song>("Sounds/AllMusic");
-            MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(song);
-            MediaPlayer.Volume = 0.5f;
-
-            
 
             bulletTex = game.Content.Load<Texture2D>("Images/bullet");
         }
@@ -66,7 +60,7 @@ namespace finalGame
         {
             List<Alien> aliens = new List<Alien>();
             Vector2 location = new Vector2(Shared.stage.X / 4, Shared.stage.Y / 4);
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 12; i++)
             {
                 aliens.Add(new Alien(game, SpriteBatch, alienTex, location));
                 //Need a better way to increment rows
@@ -75,7 +69,11 @@ namespace finalGame
                     location.X = (Shared.stage.X / 4);
                     location.Y = (location.Y + alienTex.Height + 10);
                 }
-                location.X = location.X + alienTex.Width + 10;
+                else
+                {
+                    location.X = location.X + alienTex.Width + 10;
+                }
+                
                 
             }
             return aliens;
@@ -114,6 +112,11 @@ namespace finalGame
             }
 
             base.Update(gameTime);
+        }
+
+        public void myMute()
+        {
+            collisionManager.myMute();
         }
     }
 }
