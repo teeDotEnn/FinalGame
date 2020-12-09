@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace finalGame
 {
@@ -16,6 +17,7 @@ namespace finalGame
         private PauseScreen pauseScreen;
         private OptionScene optionScene;
         private HelpScene helpScene;
+        private Song song;
 
         private KeyboardState oldstate;
 
@@ -70,6 +72,12 @@ namespace finalGame
             Components.Add(optionScene);
             helpScene = new HelpScene(this, spriteBatch);
             Components.Add(helpScene);
+
+            MediaPlayer.Volume = 10f;
+            song = this.Content.Load<Song>("Sounds/AllMusic");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(song);
+            
 
 
             startScene.show();
@@ -148,7 +156,8 @@ namespace finalGame
                 selectedIndex = optionScene.Menu.SelectedIndex;
                 if(selectedIndex == 0 && ks.IsKeyDown(Keys.Enter) && oldstate.IsKeyUp(Keys.Enter))
                 {
-                    //TODO mute the sound
+                    MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
+                    actionScene.myMute();
                 }
                 if(selectedIndex == 1 && ks.IsKeyDown(Keys.Enter) && oldstate.IsKeyUp(Keys.Enter))
                 {
@@ -172,6 +181,10 @@ namespace finalGame
                 {
                     Components.Remove(actionScene);
                     actionScene = new ActionScene(this, spriteBatch);
+                    if(MediaPlayer.IsMuted)
+                    {
+                        actionScene.myMute();
+                    }    
                     Components.Add(actionScene);
                     
                     pauseScreen.hide();

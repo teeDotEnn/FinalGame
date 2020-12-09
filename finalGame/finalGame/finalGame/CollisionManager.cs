@@ -20,6 +20,8 @@ namespace finalGame
         private Game game;
         private Texture2D explosionTex;
         private SoundEffect explosionSound;
+        private bool mute = false;
+        private List<Explosion> explosionList = new List<Explosion>();
 
         public List<Bullet> BulletList { get => bulletList; set => bulletList = value; }
         public List<Alien> AlienList { get => alienList; set => alienList = value; }
@@ -40,13 +42,21 @@ namespace finalGame
 
         public void hide()
         {
-            if (explosion != null)
+            if (explosionList.Count > 0)
             {
-                explosion.Visible = false;
-                explosion.Enabled = false;
+                foreach (var item in explosionList)
+                {
+                    item.Enabled = false;
+                    item.Visible = false;
+                }
             }
         }
-        
+
+        public void myMute()
+        {
+            mute = !mute;
+        }
+
 
         public override void Update(GameTime gameTime)
         {
@@ -67,8 +77,11 @@ namespace finalGame
                         AlienList.Remove(alien);
 
                         explosion = new Explosion(game, spriteBatch, explosionTex, alien.Position);
-                       
-                        explosionSound.Play();
+                        explosionList.Add(explosion);
+                        if(!mute)
+                        {
+                            explosionSound.Play(.1f,0.0f,0.0f);
+                        }
                         game.Components.Add(explosion);
                         return;
 
@@ -77,6 +90,14 @@ namespace finalGame
 
             }
             
+
+            // our list is for the purpose of making explosions invisible when we pause. However, we don't want it to build up and cause
+            // memory issues. This checks if the most recent explosion is still visible, and if it is not, clears the entire list. This will
+            // happen frequently enough that memory will not be an issue.
+            if(explosion != null && !explosion.Visible)
+            {
+                explosionList.Clear();
+            }
             
             base.Update(gameTime);
         }
