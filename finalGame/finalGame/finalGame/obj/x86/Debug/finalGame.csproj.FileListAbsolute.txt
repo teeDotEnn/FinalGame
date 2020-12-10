@@ -57,6 +57,7 @@ C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\obj\x86\Debug\finalGame.csprojAssemblyReference.cache
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\obj\x86\Debug\finalGame.csproj.CoreCompileInputs.cache
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\obj\x86\Debug\finalGame.csproj.CopyComplete
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\obj\x86\Debug\finalGame.exe
@@ -69,6 +70,6 @@ D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\W
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Sounds\AllMusic.wma
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Sounds\AllMusic.xnb
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Sounds\explosionSound.xnb
-C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\starsLight.xnb
-C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\hilightFont.xnb
-C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\regularFont.xnb
+D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\obj\x86\Debug\finalGame.csprojAssemblyReference.cache
+D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\HelpFont.xnb
+D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\HelpFontBold.xnb

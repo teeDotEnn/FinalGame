@@ -4,19 +4,23 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Images/bullet.png</File>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Images/explosion.png</File>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Images/ship.png</File>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Images/shipCropped.png</File>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderBlue.png</File>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderGreen.png</File>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderPurple.png</File>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderRed.png</File>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderWhite.png</File>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Sounds/AllMusic.mp3</File>
-    <File>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Sounds/explosionSound.wav</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Fonts/HelpFont.spritefont</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Fonts/HelpFontBold.spritefont</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/bullet.png</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/explosion.png</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/ship.png</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/shipCropped.png</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderBlue.png</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderGreen.png</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderPurple.png</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderRed.png</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderWhite.png</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Sounds/AllMusic.mp3</File>
+    <File>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Sounds/explosionSound.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
