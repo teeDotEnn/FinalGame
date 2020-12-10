@@ -60,6 +60,7 @@ namespace finalGame
 
         public override void Update(GameTime gameTime)
         {
+            //Manage bullets
             foreach (Bullet bullet in bulletList)
             {
                 Rectangle bulletRect = bullet.getBound();
@@ -87,6 +88,10 @@ namespace finalGame
 
                     }
                 }
+
+                //Manage aliens
+
+                
 
             }
             
