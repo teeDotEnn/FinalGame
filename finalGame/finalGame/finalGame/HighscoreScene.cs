@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace finalGame
 {
     public class HighscoreScene : GameScene
     {
+        private Game1 game;
         private SpriteFont font;
         private SpriteFont fontHead;
         private Vector2 headPosition = new Vector2(25, 50);
@@ -18,15 +20,22 @@ namespace finalGame
         private int lineDisplacement;
         private List<string> nameList;
         private List<int> highscoreList;
+        private int highscore;
+        public int Highscore { get => highscore; set => highscore = value; }
 
-        public HighscoreScene(Game game, SpriteBatch spriteBatch, List<string> nameList, List<int> highscoreList) : base(game)
+        public HighscoreScene(Game game, SpriteBatch spriteBatch) : base(game)
         {
+            this.game = (Game1)game;
+            nameList = new List<string>();
+            highscoreList = new List<int>();
+            
+
             SpriteBatch = spriteBatch;
             font = game.Content.Load<SpriteFont>("Fonts/HelpFont");
             fontHead = game.Content.Load<SpriteFont>("Fonts/HelpFontBold");
-            this.nameList = nameList;
-            this.highscoreList = highscoreList;
         }
+
+        
 
         public override void Draw(GameTime gameTime)
         {
@@ -37,8 +46,8 @@ namespace finalGame
             SpriteBatch.DrawString(fontHead, "High Scores", headPosition, Color.White);
             foreach (string name in nameList)
             {
-                string stringToPrint = $"{name}{highscoreList[highscoreIndex]}";
-                SpriteBatch.DrawString(font, stringToPrint, new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement*lineNo)), Color.White);
+                string stringToPrint = $"{highscoreIndex+1}: {name}{highscoreList[highscoreIndex]}";
+                SpriteBatch.DrawString(font, stringToPrint, new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement * lineNo)), Color.White);
                 lineNo++;
                 highscoreIndex++; // I realize these two numbers are the same, but we weren't sure if we might change them up, so we left them split
             }
@@ -49,6 +58,25 @@ namespace finalGame
 
         public override void Update(GameTime gameTime)
         {
+            
+            
+
+            nameList.Clear();
+            highscoreList.Clear();
+
+            if (File.Exists(game.Filepath))
+            {
+                string[] linesFromFile = File.ReadAllLines(game.Filepath);
+                foreach (string line in linesFromFile)
+                {
+                    string[] fields = line.Split('|');
+                    nameList.Add(fields[0]);
+                    highscoreList.Add(int.Parse(fields[1]));
+                }
+            }
+
+            highscore = highscoreList[0];
+
             base.Update(gameTime);
         }
     }

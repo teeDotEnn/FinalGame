@@ -22,16 +22,19 @@ namespace finalGame
         private SoundEffect explosionSound;
         private bool mute = false;
         private List<Explosion> explosionList = new List<Explosion>();
+        private int score;
 
         public List<Bullet> BulletList { get => bulletList; set => bulletList = value; }
         public List<Alien> AlienList { get => alienList; set => alienList = value; }
+        public int Score { get => score; set => score = value; }
 
-        public CollisionManager(Game game, SpriteBatch spriteBatch, List<Bullet> bulletList, List<Alien> alienList) : base(game)
+        public CollisionManager(Game game, SpriteBatch spriteBatch, List<Bullet> bulletList, List<Alien> alienList, Ship ship) : base(game)
         {
             this.spriteBatch = spriteBatch;
             this.game = game;
             this.bulletList = bulletList;
             this.alienList = alienList;
+            this.ship = ship;
 
             explosionTex = game.Content.Load<Texture2D>("Images/explosion");
             explosionSound = game.Content.Load<SoundEffect>("Sounds/explosionSound");
@@ -84,22 +87,36 @@ namespace finalGame
                             explosionSound.Play(.1f,0.0f,0.0f);
                         }
                         game.Components.Add(explosion);
+                        Score += 10;
                         return;
 
                     }
                 }
-
-                //Manage aliens
-
-                
-
             }
-            
+            //Manage aliens
+            foreach (Alien alien in alienList)
+            {
+                Rectangle alienRect = alien.getBound();
+                Rectangle shipRect = ship.getBound();
+                if(alienRect.Intersects(shipRect) && ship.Enabled == true)
+                {
+                    ship.Enabled = false;
+                    ship.Visible = false;
+                    explosion = new Explosion(game, spriteBatch, explosionTex, ship.Position);
+                    explosionList.Add(explosion);
+                    if(!mute)
+                    {
+                        explosionSound.Play(.1f, 0.0f, 0.0f);
+                    }
+                    game.Components.Add(explosion);
+                }
+            }
+
 
             // Our list is for the purpose of making explosions invisible when we pause. However, we don't want it to build up and cause
             // memory issues. This checks if the most recent explosion is still visible, and if it is not, clears the entire list. This will
             // happen frequently enough that memory will not be an issue.
-            if(explosion != null && !explosion.Visible)
+            if (explosion != null && !explosion.Visible)
             {
                 explosionList.Clear();
             }

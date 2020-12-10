@@ -37,10 +37,5 @@ namespace finalGame
             }
             base.Update(gameTime);
         }
-
-        public Rectangle getBound()
-        {
-            return new Rectangle((int)Position.X, (int)Position.Y, Tex.Width, Tex.Height);
-        }
     }
 }

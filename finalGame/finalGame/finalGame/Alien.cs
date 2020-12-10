@@ -37,11 +37,11 @@ namespace finalGame
             // TO DO 
             if (moveLeft)
             {
-                Speed = new Vector2(-2, 0);
+                Speed = new Vector2(-20, 0);
             }
             else
             {
-                Speed = new Vector2(2, 0);
+                Speed = new Vector2(20, 0);
             }
         }
 
@@ -59,20 +59,15 @@ namespace finalGame
 
             if(Position.X+Tex.Width>Shared.stage.X)
             {
-                Position = new Vector2(Position.X, Position.Y + vertDistanceToMove);
+                Position = new Vector2(Shared.stage.X-Tex.Width, Position.Y + vertDistanceToMove);
                 Speed = -Speed;
             }
             else if (Position.X < 0)
             {
-                Position = new Vector2(Position.X, Position.Y + vertDistanceToMove);
+                Position = new Vector2(0, Position.Y + vertDistanceToMove);
                 Speed = -Speed;
             }
             base.Update(gameTime);
-        }
-
-        public Rectangle getBound()
-        {
-            return new Rectangle((int)Position.X, (int)Position.Y, Tex.Width, Tex.Height);
         }
     }
 }

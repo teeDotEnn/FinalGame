@@ -21,10 +21,14 @@ namespace finalGame
         private HelpScene helpScene;
         private CreditsScene creditsScene;
         private HighscoreScene highscoreScene;
+        private GameOverScene gameOverScene;
         private Song song;
-        private string file = "highscores.txt";
+        private string filepath = "highscores.txt";
+        public string Filepath { get => filepath; }
 
         private KeyboardState oldstate;
+
+        
 
         public Game1()
         {
@@ -67,26 +71,12 @@ namespace finalGame
             Components.Add(stars2);
 
             //pull highscore from file - create file if it doesn't exist
-            List<string> nameList = new List<string>();
-            List<int> highscoreList = new List<int>();
             List<string> nameDefault = new List<string>() { "TIM.....", "SMD.....", "JOE.....","KAT.....","BUT.....",
                                                                  "CAR.....", "RIP.....", "MOM.....", "COO.....", "MEE....."};
-            List<int> highscoreDefault = new List<int>() { 999, 888, 777, 666, 555, 444, 333, 222, 111, 100 };
-
-
-            if(File.Exists(file))
+            List<int> highscoreDefault = new List<int>() { 100, 90, 80, 70, 60, 50, 40, 30, 20, 10 };
+            if (!File.Exists(filepath))
             {
-                string[] linesFromFile = File.ReadAllLines(file);
-                foreach (string line in linesFromFile)
-                {
-                    string[] fields = line.Split('|');
-                    nameList.Add(fields[0]);
-                    highscoreList.Add(int.Parse(fields[1]));
-                }
-            }
-            else
-            {
-                using (StreamWriter writer = new StreamWriter(file, true))
+                using (StreamWriter writer = new StreamWriter(filepath, true))
                 {
                     int highscoreIndex = 0;
                     foreach (string name in nameDefault)
@@ -96,8 +86,6 @@ namespace finalGame
                         highscoreIndex++;
                     }
                 }
-                highscoreList = highscoreDefault;
-                nameList = nameDefault;
             }
 
 
@@ -114,8 +102,9 @@ namespace finalGame
             Components.Add(helpScene);
             creditsScene = new CreditsScene(this, spriteBatch);
             Components.Add(creditsScene);
-            highscoreScene = new HighscoreScene(this, spriteBatch, nameList, highscoreList);
+            highscoreScene = new HighscoreScene(this, spriteBatch);
             Components.Add(highscoreScene);
+            
             
 
             MediaPlayer.Volume = 10f;
@@ -187,6 +176,29 @@ namespace finalGame
                     actionScene.hide();
                     actionScene.CollisionManager.hide();
                     pauseScreen.show();
+                }
+                if(actionScene.Dead)
+                {
+                    int score = actionScene.score();
+                    Components.Remove(actionScene);
+                    actionScene = new ActionScene(this, spriteBatch);
+                    if (MediaPlayer.IsMuted)
+                    {
+                        actionScene.myMute();
+                    }
+                    Components.Add(actionScene);
+                    gameOverScene = new GameOverScene(this, spriteBatch,score);
+                    Components.Add(gameOverScene);
+                    gameOverScene.show();
+                }
+            }
+            else if(gameOverScene != null && gameOverScene.Enabled)
+            {
+                if(gameOverScene.ReturnToMain)
+                {
+                    gameOverScene.hide();
+                    Components.Remove(gameOverScene);
+                    startScene.show();
                 }
             }
             else if (helpScene.Enabled)

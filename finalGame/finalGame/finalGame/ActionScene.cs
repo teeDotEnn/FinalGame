@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,17 +20,23 @@ namespace finalGame
         private Bullet bullet;
         private List<Bullet> ourBulletsList = new List<Bullet>();
         private Texture2D bulletTex;
-        private Game game;
+        private Game1 game;
         private CollisionManager collisionManager;
+        private SpriteFont font;
         public CollisionManager CollisionManager { get => collisionManager; set => collisionManager = value; }
         int delay = 22;
         int delayCounter = 0;
+        int highscore;
+        bool dead = false;
+        public bool Dead { get => dead; set => dead = value; }
+        public int Highscore { get => highscore; set => highscore = value; }
 
         public ActionScene(Game game, SpriteBatch spriteBatch) : base(game)
         {
             SpriteBatch = spriteBatch;
-            this.game = game;
-            
+            this.game = (Game1)game;
+            font = game.Content.Load<SpriteFont>("Fonts/HelpFont");
+
 
 
             Texture2D shipTex = game.Content.Load<Texture2D>("Images/shipCropped");
@@ -52,7 +59,7 @@ namespace finalGame
                 this.Components.Add(alien);
             }
             //This needs to go here
-            collisionManager = new CollisionManager(game, spriteBatch, ourBulletsList, alienList);
+            collisionManager = new CollisionManager(game, spriteBatch, ourBulletsList, alienList, ship);
             this.Components.Add(collisionManager);
 
             bulletTex = game.Content.Load<Texture2D>("Images/bullet");
@@ -83,7 +90,7 @@ namespace finalGame
                 }
                 else
                 {
-                    location.X = location.X + alienTex.Width + random.Next(20,40);
+                    location.X = location.X + alienTex.Width + random.Next(24,40);
                 }
                 
                 
@@ -93,6 +100,12 @@ namespace finalGame
 
         public override void Draw(GameTime gameTime)
         {
+            //List<int> highscoreList
+            
+            SpriteBatch.Begin();
+            SpriteBatch.DrawString(font, $"Score: {collisionManager.Score}", new Vector2(20, 10), Color.White);
+            SpriteBatch.DrawString(font, $"Highscore: {highscore}", new Vector2(Shared.stage.X - 250, 10), Color.White);
+            SpriteBatch.End();
             base.Draw(gameTime);
         }
 
@@ -128,14 +141,34 @@ namespace finalGame
                 }
             }
 
+            if (File.Exists(game.Filepath))
+            {
+                string[] linesFromFile = File.ReadAllLines(game.Filepath);
+                string[] fields = linesFromFile[0].Split('|');
+                highscore = int.Parse(fields[1]);
+            }
+            if(collisionManager.Score > highscore)
+            {
+                highscore = collisionManager.Score;
+            }
+
+            if (ship.Enabled == false)
+            {
+                dead = true;
+            }
+
             base.Update(gameTime);
         }
-
        
 
         public void myMute()
         {
             collisionManager.myMute();
+        }
+
+        public int score()
+        {
+            return collisionManager.Score;
         }
     }
 }
