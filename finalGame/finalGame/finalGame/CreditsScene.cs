@@ -31,8 +31,9 @@ namespace finalGame
             SpriteBatch.Begin();
             SpriteBatch.DrawString(fontHead, "Credits", headPosition, Color.White);
             SpriteBatch.DrawString(font, "Creators:      Stephen Draper & Tim Nigh", bodyPosition, Color.White);
-            SpriteBatch.DrawString(font, "Music:           Insert Here", new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement)), Color.White);
-            SpriteBatch.DrawString(font, "Sprites:         See Word Doc!", new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement * 2)), Color.White);
+            SpriteBatch.DrawString(font, "Explosion:    \"Explosion, 8 - bit, 01.wav\" by InspectorJ", new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement)), Color.White);
+            SpriteBatch.DrawString(font, "Music:           Drakensson", new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement*2)), Color.White);
+            SpriteBatch.DrawString(font, "Sprites:         See Word Doc!", new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement * 3)), Color.White);
             SpriteBatch.DrawString(font, "Press Esc to return.", new Vector2(Shared.stage.X - 300, Shared.stage.Y - 50), Color.White);
             SpriteBatch.End();
             base.Draw(gameTime);

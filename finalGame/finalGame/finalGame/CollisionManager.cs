@@ -43,6 +43,20 @@ namespace finalGame
             //game.Components.Add()
         }
 
+        public CollisionManager(Game game, SpriteBatch spriteBatch, List<Alien> alienList, Ship ship) : base(game)
+        {
+            this.spriteBatch = spriteBatch;
+            this.game = game;
+            this.alienList = alienList;
+            this.ship = ship;
+
+            explosionTex = game.Content.Load<Texture2D>("Images/explosion");
+            explosionSound = game.Content.Load<SoundEffect>("Sounds/explosionSound");
+
+
+            //game.Components.Add()
+        }
+
         public void hide()
         {
             if (explosionList.Count > 0)
@@ -64,32 +78,58 @@ namespace finalGame
         public override void Update(GameTime gameTime)
         {
             //Manage bullets
-            foreach (Bullet bullet in bulletList)
+            foreach (Alien alien in alienList)
             {
-                Rectangle bulletRect = bullet.getBound();
-                foreach (Alien alien in alienList)
+                Rectangle alienRect = alien.getBound();
+                if(bulletList != null)
                 {
-                    Rectangle alienRect = alien.getBound();
-                    if(bulletRect.Intersects(alienRect))
+                    foreach (Bullet bullet in bulletList)
                     {
-                        Console.WriteLine("You hit!");
-                        alien.Enabled = false;
-                        alien.Visible = false;
-                        bullet.Enabled = false;
-                        bullet.Visible = false;
-                        BulletList.Remove(bullet);
-                        AlienList.Remove(alien);
-
-                        explosion = new Explosion(game, spriteBatch, explosionTex, alien.Position);
-                        explosionList.Add(explosion);
-                        if(!mute)
+                        Rectangle bulletRect = bullet.getBound();
+                        if (bulletRect.Intersects(alienRect))
                         {
-                            explosionSound.Play(.1f,0.0f,0.0f);
-                        }
-                        game.Components.Add(explosion);
-                        Score += 10;
-                        return;
+                            Console.WriteLine("You hit!");
+                            alien.Enabled = false;
+                            alien.Visible = false;
+                            bullet.Enabled = false;
+                            bullet.Visible = false;
+                            BulletList.Remove(bullet);
+                            AlienList.Remove(alien);
 
+                            explosion = new Explosion(game, spriteBatch, explosionTex, alien.Position);
+                            explosionList.Add(explosion);
+                            if (!mute)
+                            {
+                                explosionSound.Play(.1f, 0.0f, 0.0f);
+                            }
+                            game.Components.Add(explosion);
+                            Score += 10;
+                            return;
+
+                        }
+                    }
+                }
+                else
+                {
+                    Rectangle shipRect = ship.getBound();
+                    if(alien.BulletList != null)
+                    {
+                        foreach (Bullet bullet in alien.BulletList)
+                        {
+                            Rectangle bulletRect = bullet.getBound();
+                            if (bulletRect.Intersects(shipRect))
+                            {
+                                ship.Enabled = false;
+                                ship.Visible = false;
+                                explosion = new Explosion(game, spriteBatch, explosionTex, ship.Position);
+                                explosionList.Add(explosion);
+                                if (!mute)
+                                {
+                                    explosionSound.Play(.1f, 0.0f, 0.0f);
+                                }
+                                game.Components.Add(explosion);
+                            }
+                        }
                     }
                 }
             }

@@ -87,6 +87,19 @@ namespace finalGame
                     }
                 }
             }
+            else if(File.ReadAllLines(filepath).Length == 0)
+            {
+                using (StreamWriter writer = new StreamWriter(Filepath, true))
+                {
+                    int highscoreIndex = 0;
+                    foreach (string name in nameDefault)
+                    {
+                        string stringToWrite = $"{name}|{highscoreDefault[highscoreIndex]}";
+                        writer.WriteLine(stringToWrite);
+                        highscoreIndex++;
+                    }
+                }    
+            }
 
 
             //scenes

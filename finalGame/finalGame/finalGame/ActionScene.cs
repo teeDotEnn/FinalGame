@@ -14,7 +14,6 @@ namespace finalGame
     public class ActionScene : GameScene
     {
         private Ship ship;
-        private Alien alien;
         private List<Alien> alienList = new List<Alien>();
         private Texture2D alienTex;
         private Bullet bullet;
@@ -22,6 +21,7 @@ namespace finalGame
         private Texture2D bulletTex;
         private Game1 game;
         private CollisionManager collisionManager;
+        private CollisionManager collisionManagerEnemy;
         private SpriteFont font;
         public CollisionManager CollisionManager { get => collisionManager; set => collisionManager = value; }
         int delay = 22;
@@ -30,6 +30,10 @@ namespace finalGame
         bool dead = false;
         public bool Dead { get => dead; set => dead = value; }
         public int Highscore { get => highscore; set => highscore = value; }
+        private int level = 1;
+        private int levelDelay = 200;
+        private int levelDelayCounter = 0;
+        private bool levelDone = false;
 
         public ActionScene(Game game, SpriteBatch spriteBatch) : base(game)
         {
@@ -53,16 +57,19 @@ namespace finalGame
             this.Components.Add(alien);
             alienList.Add(alien);
             */
-            alienList = generateAliens(1);
+            alienList = generateAliens(level);
             foreach(Alien alien in alienList)
             {
                 this.Components.Add(alien);
             }
             //This needs to go here
             collisionManager = new CollisionManager(game, spriteBatch, ourBulletsList, alienList, ship);
+            collisionManagerEnemy = new CollisionManager(game, spriteBatch, alienList, ship);
             this.Components.Add(collisionManager);
+            Components.Add(collisionManagerEnemy);
+            
 
-            bulletTex = game.Content.Load<Texture2D>("Images/bullet");
+            bulletTex = game.Content.Load<Texture2D>("Images/bulletYellowSmall");
         }
 
         private List<Alien> generateAliens(int level)
@@ -75,11 +82,11 @@ namespace finalGame
                 //If the length of the rows change, we need to change thse as well
                 if(i < 6 || i>11 && i < 18)
                 {
-                    aliens.Add(new Alien(game, SpriteBatch, alienTex, location,true));
+                    aliens.Add(new Alien(game, SpriteBatch, alienTex, location,true, level, random));
                 }
                 else
                 {
-                    aliens.Add(new Alien(game, SpriteBatch, alienTex, location, false));
+                    aliens.Add(new Alien(game, SpriteBatch, alienTex, location, false, level, random));
                 }
                 
                 //Need a better way to increment rows (this controls the length of the rows)
@@ -105,6 +112,12 @@ namespace finalGame
             SpriteBatch.Begin();
             SpriteBatch.DrawString(font, $"Score: {collisionManager.Score}", new Vector2(20, 10), Color.White);
             SpriteBatch.DrawString(font, $"Highscore: {highscore}", new Vector2(Shared.stage.X - 250, 10), Color.White);
+            if(levelDone)
+            {
+                Console.WriteLine("working");
+                SpriteBatch.DrawString(font, $"LEVEL COMPLETE!", new Vector2(Shared.stage.X/2-130, Shared.stage.Y/2-100), Color.White);
+                SpriteBatch.DrawString(font, $"Starting level {level+1}.", new Vector2(Shared.stage.X / 2 - 105, Shared.stage.Y/2-50), Color.White);
+            }
             SpriteBatch.End();
             base.Draw(gameTime);
         }
@@ -125,8 +138,28 @@ namespace finalGame
                 delayCounter = 0;
             }
 
+            if (alienList.Count == 0)
+            {
+                levelDone = true;
+                levelDelayCounter++;
+                if(levelDelayCounter > levelDelay)
+                {
+                    levelDone = false;
+                    level++;
+                    alienList = generateAliens(level);
+                    foreach (Alien alien in alienList)
+                    {
+                        Components.Add(alien);
+                    }
+                    levelDelayCounter = 0;
+                }
+            }
+            Console.WriteLine(alienList.Count);
+            Console.WriteLine(levelDone);
+
             collisionManager.AlienList = alienList;
             collisionManager.BulletList = ourBulletsList;
+            collisionManagerEnemy.AlienList = alienList;
 
             delayCounter++;
             //remove dead compoments
@@ -144,8 +177,11 @@ namespace finalGame
             if (File.Exists(game.Filepath))
             {
                 string[] linesFromFile = File.ReadAllLines(game.Filepath);
-                string[] fields = linesFromFile[0].Split('|');
-                highscore = int.Parse(fields[1]);
+                if(linesFromFile.Length>0)
+                {
+                    string[] fields = linesFromFile[0].Split('|');
+                    highscore = int.Parse(fields[1]);
+                }
             }
             if(collisionManager.Score > highscore)
             {
@@ -170,5 +206,7 @@ namespace finalGame
         {
             return collisionManager.Score;
         }
+
+
     }
 }

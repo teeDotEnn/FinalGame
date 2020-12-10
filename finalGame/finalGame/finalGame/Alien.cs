@@ -21,6 +21,13 @@ namespace finalGame
     public class Alien : MyObject
     {
         float vertDistanceToMove;
+        Bullet bullet;
+        Texture2D bulletTex;
+        List<Bullet> bulletList = new List<Bullet>();
+        Game1 game;
+        Random rand;
+        int level;
+        public List<Bullet> BulletList { get => bulletList; set => bulletList = value; }
         /// <summary>
         /// Instatiates a new alien object
         /// </summary>
@@ -28,20 +35,29 @@ namespace finalGame
         /// <param name="spriteBatch">The scene's spritebatch</param>
         /// <param name="tex">The 2d texture for the alien</param>
         /// <param name="position">The position </param>
-        public Alien(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position, bool moveLeft) : base(game)
+        public Alien(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position, bool moveLeft, int level, Random rand) : base(game)
         {
+            this.game = (Game1)game;
             SpriteBatch = spriteBatch;
             Tex = tex;
             Position = position;
             vertDistanceToMove = tex.Height + 10;
+            bulletTex = game.Content.Load<Texture2D>("Images/bulletRedSmall");
+            this.rand = rand;
+            int speedJump = 0;
+            if(level > 1)
+            {
+                speedJump = 1;
+            }
+            int speed = 2 + (level / 4) + speedJump;
             // TO DO 
             if (moveLeft)
             {
-                Speed = new Vector2(-20, 0);
+                Speed = new Vector2(-speed, 0);
             }
             else
             {
-                Speed = new Vector2(20, 0);
+                Speed = new Vector2(speed, 0);
             }
         }
 
@@ -67,6 +83,21 @@ namespace finalGame
                 Position = new Vector2(0, Position.Y + vertDistanceToMove);
                 Speed = -Speed;
             }
+
+            int faster = level * 30;
+            int fastJump = 0;
+            if(level > 2)
+            {
+                fastJump = 50;
+            }
+            int speed = 800 - faster - fastJump;
+            if(rand.Next(0,speed) == 0)
+            {
+                bullet = new Bullet(game, SpriteBatch, bulletTex, new Vector2(Position.X + Tex.Width / 2, Position.Y + bulletTex.Height),true);
+                game.Components.Add(bullet);
+                bulletList.Add(bullet);
+            }
+
             base.Update(gameTime);
         }
     }

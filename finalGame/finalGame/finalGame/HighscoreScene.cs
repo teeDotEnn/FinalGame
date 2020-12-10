@@ -75,8 +75,10 @@ namespace finalGame
                 }
             }
 
-            highscore = highscoreList[0];
-
+            if(highscoreList.Count>0)
+            {
+                highscore = highscoreList[0];
+            }
             base.Update(gameTime);
         }
     }

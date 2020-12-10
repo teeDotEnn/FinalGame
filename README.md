@@ -50,4 +50,11 @@ Music - Drakensson
   
     armour -> movement patterns -> shooting at player
   
-  
+### Sprite References
+
+https://www.pngfind.com/mpng/ToiwRo_space-invaders-alien-png-photo-space-invaders-alien/
+
+https://www.pngwing.com/en/free-png-ykljd
+
+http://www.pngplay.com/image/63822
+

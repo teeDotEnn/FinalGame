@@ -12,7 +12,6 @@ namespace finalGame
 {
     public class GameOverScene : GameScene
     {
-        private Vector2 position;
         private SpriteFont font;
         private SpriteFont fontHead;
         private Vector2 headPosition = new Vector2(25, 50);
@@ -37,7 +36,6 @@ namespace finalGame
             SpriteBatch = spriteBatch;
             font = game.Content.Load<SpriteFont>("Fonts/HelpFont");
             fontHead = game.Content.Load<SpriteFont>("Fonts/HelpFontBold");
-            position = new Vector2(50, 50);
             this.score = score;
         }
 
@@ -114,7 +112,7 @@ namespace finalGame
                 KeyboardState ks = Keyboard.GetState();
                 if(ks.IsKeyDown(Keys.Enter))
                 {
-                    nameList.Insert(newScoreLocation, ((string.Join("", initials)) + "....."));
+                    nameList.Insert(newScoreLocation, (string.Join("", initials) + "....."));
                     highscoreList.Insert(newScoreLocation, score);
                     nameList.RemoveAt(nameList.Count - 1);
                     highscoreList.RemoveAt(highscoreList.Count - 1);

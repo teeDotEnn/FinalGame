@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/spaceInvaderGreen.png</SourceFile>
-  <SourceTime>2020-12-09T12:15:16.5323755-05:00</SourceTime>
-  <DestFile>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/bin/Windows/Images/spaceInvaderGreen.xnb</DestFile>
-  <DestTime>2020-12-10T15:55:14.4035793-05:00</DestTime>
+  <SourceFile>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Images/bulletRedSmall.png</SourceFile>
+  <SourceTime>2020-12-10T15:54:18.3262239-05:00</SourceTime>
+  <DestFile>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/bin/Windows/Images/bulletRedSmall.xnb</DestFile>
+  <DestTime>2020-12-10T15:55:14.3726634-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

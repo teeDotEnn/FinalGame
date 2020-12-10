@@ -12,12 +12,22 @@ namespace finalGame
 {
     public class Bullet : MyObject
     {
+        private bool isAlien;
         public Bullet(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position) : base(game)
         {
             SpriteBatch = spriteBatch;
             Tex = tex;
             Position = position;
             Speed = new Vector2(0,7);
+        }
+
+        public Bullet(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position, bool isAlien) : base(game)
+        {
+            SpriteBatch = spriteBatch;
+            Tex = tex;
+            Position = position;
+            Speed = new Vector2(0, 7);
+            this.isAlien = isAlien;
         }
 
         public override void Draw(GameTime gameTime)
@@ -30,11 +40,23 @@ namespace finalGame
 
         public override void Update(GameTime gameTime)
         {
-            Position -= Speed;
-            if(Position.Y < 0)
+            if(!isAlien)
             {
-                this.Enabled = false;
+                Position -= Speed;
+                if (Position.Y < 0)
+                {
+                    this.Enabled = false;
+                }
             }
+            else
+            {
+                Position += Speed;
+                if (Position.Y > Shared.stage.Y)
+                {
+                    this.Enabled = false;
+                }
+            }
+            
             base.Update(gameTime);
         }
     }
