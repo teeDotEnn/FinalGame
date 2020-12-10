@@ -11,6 +11,7 @@ namespace finalGame
 {
     public class Ship : MyObject
     {
+        
         public Ship(Game game, SpriteBatch spriteBatch, Texture2D tex) : base(game)
         {
             SpriteBatch = spriteBatch;

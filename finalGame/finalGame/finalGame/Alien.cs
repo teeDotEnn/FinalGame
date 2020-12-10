@@ -20,6 +20,7 @@ namespace finalGame
     /// </summary>
     public class Alien : MyObject
     {
+        float vertDistanceToMove;
         /// <summary>
         /// Instatiates a new alien object
         /// </summary>
@@ -32,14 +33,15 @@ namespace finalGame
             SpriteBatch = spriteBatch;
             Tex = tex;
             Position = position;
+            vertDistanceToMove = tex.Height + 10;
             // TO DO 
             if (moveLeft)
             {
-                Speed = new Vector2(0, -4);
+                Speed = new Vector2(-2, 0);
             }
             else
             {
-                Speed = new Vector2(0, 4);
+                Speed = new Vector2(2, 0);
             }
         }
 
@@ -53,8 +55,18 @@ namespace finalGame
 
         public override void Update(GameTime gameTime)
         {
-            Vector2 position = Position;
-            position.Y += Speed.Y;
+            Position += Speed;
+
+            if(Position.X+Tex.Width>Shared.stage.X)
+            {
+                Position = new Vector2(Position.X, Position.Y + vertDistanceToMove);
+                Speed = -Speed;
+            }
+            else if (Position.X < 0)
+            {
+                Position = new Vector2(Position.X, Position.Y + vertDistanceToMove);
+                Speed = -Speed;
+            }
             base.Update(gameTime);
         }
 
