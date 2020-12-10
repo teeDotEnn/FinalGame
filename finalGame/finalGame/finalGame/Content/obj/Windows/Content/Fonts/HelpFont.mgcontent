@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/Fonts/HelpFont.spritefont</SourceFile>
-  <SourceTime>2020-12-09T17:46:36.2100554-05:00</SourceTime>
-  <DestFile>D:/Conestoga/Game Theory/finalGame/FinalGame/finalGame/finalGame/finalGame/Content/bin/Windows/Content/Fonts/HelpFont.xnb</DestFile>
-  <DestTime>2020-12-10T11:34:22.5646976-05:00</DestTime>
+  <SourceFile>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/Fonts/HelpFont.spritefont</SourceFile>
+  <SourceTime>2020-12-10T10:34:04.7588123-05:00</SourceTime>
+  <DestFile>C:/Users/Tim/repos/FinalGame/finalGame/finalGame/finalGame/Content/bin/Windows/Content/Fonts/HelpFont.xnb</DestFile>
+  <DestTime>2020-12-10T16:48:26.3207814-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

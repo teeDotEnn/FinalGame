@@ -80,3 +80,5 @@ C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\HelpFontBold.xnb
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\bulletRedSmall.xnb
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\bulletYellowSmall.xnb
+C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\bulletRedSmall.xnb
+C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\bulletYellowSmall.xnb
