@@ -24,7 +24,7 @@ namespace finalGame
         private CollisionManager collisionManagerEnemy;
         private SpriteFont font;
         public CollisionManager CollisionManager { get => collisionManager; set => collisionManager = value; }
-        int delay = 22;
+        int delay = 22; //22
         int delayCounter = 0;
         int highscore;
         bool dead = false;
@@ -34,6 +34,10 @@ namespace finalGame
         private int levelDelay = 200;
         private int levelDelayCounter = 0;
         private bool levelDone = false;
+        private Asteroid asteroid;
+        private AsteroidCollisionManager asteroidCollisionManager;
+        private int asteroidDelay = 250;
+        private int asteroidDelayCounter = 200;
 
         public ActionScene(Game game, SpriteBatch spriteBatch) : base(game)
         {
@@ -65,9 +69,10 @@ namespace finalGame
             //This needs to go here
             collisionManager = new CollisionManager(game, spriteBatch, ourBulletsList, alienList, ship);
             collisionManagerEnemy = new CollisionManager(game, spriteBatch, alienList, ship);
+            asteroidCollisionManager = new AsteroidCollisionManager(game, spriteBatch, ship);
             this.Components.Add(collisionManager);
             Components.Add(collisionManagerEnemy);
-            
+            Components.Add(asteroidCollisionManager);
 
             bulletTex = game.Content.Load<Texture2D>("Images/bulletYellowSmall");
         }
@@ -193,6 +198,18 @@ namespace finalGame
                 dead = true;
             }
 
+            if(level > 2)
+            {
+                if(asteroidDelayCounter > asteroidDelay)
+                {
+                    asteroid = new Asteroid(game, SpriteBatch, new Vector2(ship.Position.X, 0));
+                    asteroidCollisionManager.AsteroidList.Add(asteroid);
+                    Components.Add(asteroid);
+                    asteroidDelayCounter = 0;
+                }
+                asteroidDelayCounter++;
+            }
+
             base.Update(gameTime);
         }
        
@@ -200,13 +217,13 @@ namespace finalGame
         public void myMute()
         {
             collisionManager.myMute();
+            collisionManagerEnemy.myMute();
+            asteroidCollisionManager.myMute();
         }
 
         public int score()
         {
             return collisionManager.Score;
         }
-
-
     }
 }
