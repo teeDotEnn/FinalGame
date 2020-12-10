@@ -45,6 +45,7 @@ namespace finalGame
             bulletTex = game.Content.Load<Texture2D>("Images/bulletRedSmall");
             this.rand = rand;
             int speedJump = 0;
+            this.level = level;
             if(level > 1)
             {
                 speedJump = 1;
@@ -84,6 +85,7 @@ namespace finalGame
                 Speed = -Speed;
             }
 
+            bool working = true;
             int faster = level * 30;
             int fastJump = 0;
             if(level > 2)
@@ -91,13 +93,15 @@ namespace finalGame
                 fastJump = 50;
             }
             int speed = 800 - faster - fastJump;
-            if(rand.Next(0,speed) == 0)
+            if (level != 1)
             {
-                bullet = new Bullet(game, SpriteBatch, bulletTex, new Vector2(Position.X + Tex.Width / 2, Position.Y + bulletTex.Height),true);
-                game.Components.Add(bullet);
-                bulletList.Add(bullet);
+                if (rand.Next(0, speed) == 1)
+                {
+                    bullet = new Bullet(game, SpriteBatch, bulletTex, new Vector2(Position.X + Tex.Width / 2, Position.Y + bulletTex.Height), true);
+                    game.Components.Add(bullet);
+                    bulletList.Add(bullet);
+                }
             }
-
             base.Update(gameTime);
         }
     }
