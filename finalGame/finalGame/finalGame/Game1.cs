@@ -67,27 +67,37 @@ namespace finalGame
             Components.Add(stars2);
 
             //pull highscore from file - create file if it doesn't exist
-            List<string> highscoreList = new List<string>();
-            List<string> highscoreDefault = new List<string>() { "TIM.....XXX", "SMD.....XXX", "JOE.....XXX","KAT.....XXX","BUT.....XXX",
-                                                                 "CAR.....XXX", "RIP.....XXX", "MOM.....XXX", "COO.....XXX", "MEE.....XXX"};
+            List<string> nameList = new List<string>();
+            List<int> highscoreList = new List<int>();
+            List<string> nameDefault = new List<string>() { "TIM.....", "SMD.....", "JOE.....","KAT.....","BUT.....",
+                                                                 "CAR.....", "RIP.....", "MOM.....", "COO.....", "MEE....."};
+            List<int> highscoreDefault = new List<int>() { 999, 888, 777, 666, 555, 444, 333, 222, 111, 100 };
+
+
             if(File.Exists(file))
             {
                 string[] linesFromFile = File.ReadAllLines(file);
                 foreach (string line in linesFromFile)
                 {
-                    highscoreList.Add(line);
+                    string[] fields = line.Split('|');
+                    nameList.Add(fields[0]);
+                    highscoreList.Add(int.Parse(fields[1]));
                 }
             }
             else
             {
                 using (StreamWriter writer = new StreamWriter(file, true))
                 {
-                    foreach (string item in highscoreDefault)
+                    int highscoreIndex = 0;
+                    foreach (string name in nameDefault)
                     {
-                        writer.WriteLine(item);
+                        string stringToWrite = $"{name}|{highscoreDefault[highscoreIndex]}";
+                        writer.WriteLine(stringToWrite);
+                        highscoreIndex++;
                     }
                 }
                 highscoreList = highscoreDefault;
+                nameList = nameDefault;
             }
 
 
@@ -104,7 +114,7 @@ namespace finalGame
             Components.Add(helpScene);
             creditsScene = new CreditsScene(this, spriteBatch);
             Components.Add(creditsScene);
-            highscoreScene = new HighscoreScene(this, spriteBatch, highscoreList);
+            highscoreScene = new HighscoreScene(this, spriteBatch, nameList, highscoreList);
             Components.Add(highscoreScene);
             
 
