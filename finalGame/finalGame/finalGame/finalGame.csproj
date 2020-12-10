@@ -45,10 +45,12 @@
     <Compile Include="Alien.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="CollisionManager.cs" />
+    <Compile Include="CreditsScene.cs" />
     <Compile Include="Explosion.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameScene.cs" />
     <Compile Include="HelpScene.cs" />
+    <Compile Include="HighscoreScene.cs" />
     <Compile Include="MenuComponent.cs" />
     <Compile Include="MovingStars.cs" />
     <Compile Include="MyObject.cs" />

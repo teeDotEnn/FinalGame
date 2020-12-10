@@ -91,7 +91,7 @@ namespace finalGame
             }
             
 
-            // our list is for the purpose of making explosions invisible when we pause. However, we don't want it to build up and cause
+            // Our list is for the purpose of making explosions invisible when we pause. However, we don't want it to build up and cause
             // memory issues. This checks if the most recent explosion is still visible, and if it is not, clears the entire list. This will
             // happen frequently enough that memory will not be an issue.
             if(explosion != null && !explosion.Visible)

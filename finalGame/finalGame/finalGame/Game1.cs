@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.Collections.Generic;
+using System.IO;
 
 namespace finalGame
 {
@@ -17,7 +19,10 @@ namespace finalGame
         private PauseScreen pauseScreen;
         private OptionScene optionScene;
         private HelpScene helpScene;
+        private CreditsScene creditsScene;
+        private HighscoreScene highscoreScene;
         private Song song;
+        private string file = "highscores.txt";
 
         private KeyboardState oldstate;
 
@@ -58,8 +63,33 @@ namespace finalGame
             //background
             MovingStars stars = new MovingStars(this, spriteBatch, new Vector2(1,0), new Vector2 (0,0));
             Components.Add(stars);
-            MovingStars stars2 = new MovingStars(this, spriteBatch, new Vector2(2, 0), new Vector2(-50, -50));
+            MovingStars stars2 = new MovingStars(this, spriteBatch, new Vector2(2,0), new Vector2(-50, -50));
             Components.Add(stars2);
+
+            //pull highscore from file - create file if it doesn't exist
+            List<string> highscoreList = new List<string>();
+            List<string> highscoreDefault = new List<string>() { "TIM.....XXX", "SMD.....XXX", "JOE.....XXX","KAT.....XXX","BUT.....XXX",
+                                                                 "CAR.....XXX", "RIP.....XXX", "MOM.....XXX", "COO.....XXX", "MEE.....XXX"};
+            if(File.Exists(file))
+            {
+                string[] linesFromFile = File.ReadAllLines(file);
+                foreach (string line in linesFromFile)
+                {
+                    highscoreList.Add(line);
+                }
+            }
+            else
+            {
+                using (StreamWriter writer = new StreamWriter(file, true))
+                {
+                    foreach (string item in highscoreDefault)
+                    {
+                        writer.WriteLine(item);
+                    }
+                }
+                highscoreList = highscoreDefault;
+            }
+
 
             //scenes
             actionScene = new ActionScene(this, spriteBatch);
@@ -72,6 +102,11 @@ namespace finalGame
             Components.Add(optionScene);
             helpScene = new HelpScene(this, spriteBatch);
             Components.Add(helpScene);
+            creditsScene = new CreditsScene(this, spriteBatch);
+            Components.Add(creditsScene);
+            highscoreScene = new HighscoreScene(this, spriteBatch, highscoreList);
+            Components.Add(highscoreScene);
+            
 
             MediaPlayer.Volume = 10f;
             song = this.Content.Load<Song>("Sounds/AllMusic");
@@ -119,15 +154,16 @@ namespace finalGame
                 {
                     startScene.hide();
                     optionScene.show();
-                    //oldstate = ks;
                 }
                 if(selectedIndex == 3 && ks.IsKeyDown(Keys.Enter) && oldstate.IsKeyUp(Keys.Enter))
                 {
-                    // TODO high scores
+                    startScene.hide();
+                    highscoreScene.show();
                 }
                 if(selectedIndex == 4 && ks.IsKeyDown(Keys.Enter) && oldstate.IsKeyUp(Keys.Enter))
                 {
-                    // TODO credits
+                    startScene.hide();
+                    creditsScene.show();
                 }
                 if(selectedIndex == 5 && ks.IsKeyDown(Keys.Enter) && oldstate.IsKeyUp(Keys.Enter))
                 {
@@ -165,6 +201,22 @@ namespace finalGame
                     startScene.show();
                 }
             }
+            else if(creditsScene.Enabled)
+            {
+                if(ks.IsKeyDown(Keys.Escape))
+                {
+                    creditsScene.hide();
+                    startScene.show();
+                }
+            }
+            else if (highscoreScene.Enabled)
+            {
+                if (ks.IsKeyDown(Keys.Escape))
+                {
+                    highscoreScene.hide();
+                    startScene.show();
+                }
+            }
             else if (pauseScreen.Enabled)
             {
                 selectedIndex = pauseScreen.Menu.SelectedIndex;
@@ -175,7 +227,8 @@ namespace finalGame
                 }
                 if(selectedIndex == 1 && ks.IsKeyDown(Keys.Enter) && oldstate.IsKeyUp(Keys.Enter))
                 {
-                    // TODO mute sound
+                    MediaPlayer.IsMuted = !MediaPlayer.IsMuted;
+                    actionScene.myMute();
                 }
                 if(selectedIndex == 2 && ks.IsKeyDown(Keys.Enter) && oldstate.IsKeyUp(Keys.Enter))
                 {

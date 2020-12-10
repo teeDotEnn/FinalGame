@@ -70,3 +70,6 @@ D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\W
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Sounds\AllMusic.wma
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Sounds\AllMusic.xnb
 D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Sounds\explosionSound.xnb
+D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\obj\x86\Debug\finalGame.csprojAssemblyReference.cache
+D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\HelpFont.xnb
+D:\Conestoga\Game Theory\finalGame\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Fonts\HelpFontBold.xnb

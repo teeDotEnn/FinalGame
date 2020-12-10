@@ -11,21 +11,34 @@ namespace finalGame
 {
     public class HelpScene : GameScene
     {
-        private Texture2D tex;
         private Vector2 position;
+        private SpriteFont font;
+        private SpriteFont fontHead;
+        private Vector2 headPosition = new Vector2(25, 50);
+        private Vector2 bodyPosition = new Vector2(25, 120);
+        private int lineDisplacement;
 
 
         public HelpScene(Game game, SpriteBatch spriteBatch) : base(game)
         {
             SpriteBatch = spriteBatch;
-            tex = game.Content.Load<Texture2D>("Images/spaceInvaderWhite");
+            font = game.Content.Load<SpriteFont>("Fonts/HelpFont");
+            fontHead = game.Content.Load<SpriteFont>("Fonts/HelpFontBold");
             position = new Vector2(50, 50);
         }
 
         public override void Draw(GameTime gameTime)
         {
+            lineDisplacement = font.LineSpacing + 10;
             SpriteBatch.Begin();
-            SpriteBatch.Draw(tex, position, Color.White);
+            SpriteBatch.DrawString(fontHead, "Help", headPosition, Color.White);
+            SpriteBatch.DrawString(font, "Your goal is to defeat all of the aliens and save the planet!", bodyPosition, Color.White);
+            SpriteBatch.DrawString(font, "Use the arrow keys to move your ship back and forth.", new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement)), Color.White);
+            SpriteBatch.DrawString(font, "You can shoot by pressing the spacebar.", new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement*2)), Color.White);
+            SpriteBatch.DrawString(font, "Be careful to dodge the enemy bullets and ships!", new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement * 3)), Color.White);
+            SpriteBatch.DrawString(font, "You are the Earth's last line of defence.", new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement * 5)), Color.White);
+            SpriteBatch.DrawString(font, "No pressure.", new Vector2(bodyPosition.X, bodyPosition.Y + (lineDisplacement * 8)), Color.White);
+            SpriteBatch.DrawString(font, "Press Esc to return.", new Vector2(Shared.stage.X - 300, Shared.stage.Y - 50), Color.White);
             SpriteBatch.End();
             base.Draw(gameTime);
         }
