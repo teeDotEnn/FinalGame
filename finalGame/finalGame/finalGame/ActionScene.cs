@@ -62,7 +62,15 @@ namespace finalGame
             Vector2 location = new Vector2(Shared.stage.X / 4, Shared.stage.Y / 4);
             for (int i = 0; i < 12; i++)
             {
-                aliens.Add(new Alien(game, SpriteBatch, alienTex, location));
+                if(i == 3 || i == 11)
+                {
+                    aliens.Add(new Alien(game, SpriteBatch, alienTex, location,true));
+                }
+                else
+                {
+                    aliens.Add(new Alien(game, SpriteBatch, alienTex, location, false));
+                }
+                
                 //Need a better way to increment rows
                 if(i == 3 || i == 7 || i == 11)
                 {

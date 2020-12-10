@@ -27,13 +27,20 @@ namespace finalGame
         /// <param name="spriteBatch">The scene's spritebatch</param>
         /// <param name="tex">The 2d texture for the alien</param>
         /// <param name="position">The position </param>
-        public Alien(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position) : base(game)
+        public Alien(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position, bool moveLeft) : base(game)
         {
             SpriteBatch = spriteBatch;
             Tex = tex;
             Position = position;
             // TO DO 
-            Speed = new Vector2(4, 0);
+            if (moveLeft)
+            {
+                Speed = new Vector2(0, -4);
+            }
+            else
+            {
+                Speed = new Vector2(0, 4);
+            }
         }
 
         public override void Draw(GameTime gameTime)
@@ -46,6 +53,8 @@ namespace finalGame
 
         public override void Update(GameTime gameTime)
         {
+            Vector2 position = Position;
+            position.Y += Speed.Y;
             base.Update(gameTime);
         }
 
