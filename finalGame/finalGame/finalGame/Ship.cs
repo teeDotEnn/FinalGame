@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: Ship.cs
+ * Purpose: COntrols the graphics and inputs on the ship
+ * Rev History:
+ *          Created 2020-12-08
+ *          Stephen Draper
+ *          Refactored and documented 2020-12-11
+ *          Timothy Nigh
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +17,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace finalGame
 {
+    /// <summary>
+    /// Ship object
+    /// </summary>
     public class Ship : MyObject
     {
         List<Bullet> bulletList;
@@ -16,7 +27,16 @@ namespace finalGame
         Texture2D bulletTex;
         int delay = 22; //22
         int delayCounter = 0;
+        /// <summary>
+        /// Bullet list
+        /// </summary>
         public List<Bullet> BulletList { get => bulletList; set => bulletList = value; }
+        /// <summary>
+        /// Instatiate a new ship
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="spriteBatch"></param>
+        /// <param name="tex"></param>
         public Ship(Game game, SpriteBatch spriteBatch, Texture2D tex) : base(game)
         {
             SpriteBatch = spriteBatch;
