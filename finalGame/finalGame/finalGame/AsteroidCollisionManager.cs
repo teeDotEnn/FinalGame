@@ -10,7 +10,10 @@ using Microsoft.Xna.Framework.Input;
 
 namespace finalGame
 {
-    class AsteroidCollisionManager : GameComponent
+    /// <summary>
+    /// THe collision manager for handling asteroids
+    /// </summary>
+    public class AsteroidCollisionManager : GameComponent
     {
         private Game1 game;
         private SpriteBatch spriteBatch;
@@ -19,9 +22,17 @@ namespace finalGame
         private SoundEffect explosionSound;
         private Texture2D explosionTex;
         private List<Asteroid> asteroidList = new List<Asteroid>();
+        /// <summary>
+        /// The list of asteroids
+        /// </summary>
         public List<Asteroid> AsteroidList { get => asteroidList; set => asteroidList = value; }
         private bool mute = false;
-
+        /// <summary>
+        /// Instatiates a new instance of the collision manager
+        /// </summary>
+        /// <param name="game">The game that hosts the collision manager</param>
+        /// <param name="spriteBatch">The sprite batch to draw the explosions</param>
+        /// <param name="ship">The player's ship</param>
         public AsteroidCollisionManager(Game game, SpriteBatch spriteBatch, Ship ship) : base(game)
         {
             this.game = (Game1)game;
@@ -35,7 +46,10 @@ namespace finalGame
         }
 
         
-
+        /// <summary>
+        /// Checks to see if the ship is hit by an asteroid
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             Rectangle shipRect = ship.getBound();
@@ -60,7 +74,9 @@ namespace finalGame
             
             base.Update(gameTime);
         }
-
+        /// <summary>
+        /// prevents the sound from being played
+        /// </summary>
         public void myMute()
         {
             mute = !mute;

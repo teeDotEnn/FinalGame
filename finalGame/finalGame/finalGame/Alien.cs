@@ -28,6 +28,9 @@ namespace finalGame
         Random rand;
         int level;
         public List<Bullet> BulletList { get => bulletList; set => bulletList = value; }
+
+
+
         /// <summary>
         /// Instatiates a new alien object
         /// </summary>
@@ -46,12 +49,12 @@ namespace finalGame
             this.rand = rand;
             int speedJump = 0;
             this.level = level;
-            if(level > 1)
+            if (level > 1)
             {
                 speedJump = 1;
             }
             int speed = 2 + (level / 4) + speedJump;
-            // TO DO 
+
             if (moveLeft)
             {
                 Speed = new Vector2(-speed, 0);
@@ -61,7 +64,10 @@ namespace finalGame
                 Speed = new Vector2(speed, 0);
             }
         }
-
+        /// <summary>
+        /// Draw the alien
+        /// </summary>
+        /// <param name="gameTime">gametime from game</param>
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Begin();
@@ -69,14 +75,18 @@ namespace finalGame
             SpriteBatch.End();
             base.Draw(gameTime);
         }
-
+        /// <summary>
+        /// Handles movement of the alien
+        /// Handles the shooting of the alien
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             Position += Speed;
 
-            if(Position.X+Tex.Width>Shared.stage.X)
+            if (Position.X + Tex.Width > Shared.stage.X)
             {
-                Position = new Vector2(Shared.stage.X-Tex.Width, Position.Y + vertDistanceToMove);
+                Position = new Vector2(Shared.stage.X - Tex.Width, Position.Y + vertDistanceToMove);
                 Speed = -Speed;
             }
             else if (Position.X < 0)
@@ -88,7 +98,7 @@ namespace finalGame
             bool working = true;
             int faster = level * 30;
             int fastJump = 0;
-            if(level > 2)
+            if (level > 2)
             {
                 fastJump = 50;
             }

@@ -10,9 +10,20 @@ using Microsoft.Xna.Framework.Input;
 
 namespace finalGame
 {
+    /// <summary>
+    /// The class that storees bullets
+    /// </summary>
     public class Bullet : MyObject
     {
         private bool isAlien;
+
+        /// <summary>
+        /// instatiates a new bullet
+        /// </summary>
+        /// <param name="game">Game</param>
+        /// <param name="spriteBatch">spritebatch</param>
+        /// <param name="tex">texture to be used for the bullet</param>
+        /// <param name="position">starting positon of the bullet</param>
         public Bullet(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position) : base(game)
         {
             SpriteBatch = spriteBatch;
@@ -21,6 +32,14 @@ namespace finalGame
             Speed = new Vector2(0,7);
         }
 
+        /// <summary>
+        /// instatiates a new bullet
+        /// </summary>
+        /// <param name="game">Game</param>
+        /// <param name="spriteBatch">spritebatch</param>
+        /// <param name="tex">texture to be used for the bullet</param>
+        /// <param name="position">starting positon of the bullet</param
+        /// <param name="isAlien">boolean to determine if the bullet belongs to an alien or not</param>
         public Bullet(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position, bool isAlien) : base(game)
         {
             SpriteBatch = spriteBatch;
@@ -37,7 +56,10 @@ namespace finalGame
             SpriteBatch.End();
             base.Draw(gameTime);
         }
-
+        /// <summary>
+        /// Updates the position of the bullet
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             if(!isAlien)
@@ -46,6 +68,7 @@ namespace finalGame
                 if (Position.Y < 0)
                 {
                     this.Enabled = false;
+                    this.Visible = false;
                 }
             }
             else
@@ -54,6 +77,7 @@ namespace finalGame
                 if (Position.Y > Shared.stage.Y)
                 {
                     this.Enabled = false;
+                    this.Visible = false;
                 }
             }
             

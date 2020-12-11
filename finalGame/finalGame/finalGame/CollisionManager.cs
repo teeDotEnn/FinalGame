@@ -10,6 +10,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace finalGame
 {
+    /// <summary>
+    /// The main collision manager
+    /// </summary>
     public class CollisionManager : GameComponent
     {
         private SpriteBatch spriteBatch;
@@ -23,11 +26,24 @@ namespace finalGame
         private bool mute = false;
         private List<Explosion> explosionList = new List<Explosion>();
         private int score;
-
+        /// <summary>
+        /// The list of bullets
+        /// </summary>
         public List<Bullet> BulletList { get => bulletList; set => bulletList = value; }
+        /// <summary>
+        /// The list of aliens
+        /// </summary>
         public List<Alien> AlienList { get => alienList; set => alienList = value; }
         public int Score { get => score; set => score = value; }
-
+        
+        /// <summary>
+        /// Instatiate a new collision manager
+        /// </summary>
+        /// <param name="game">The game that the collision manager is managing</param>
+        /// <param name="spriteBatch">The the spriteBatch</param>
+        /// <param name="bulletList">the bullet list</param>
+        /// <param name="alienList">the alient list</param>
+        /// <param name="ship">the ship</param>
         public CollisionManager(Game game, SpriteBatch spriteBatch, List<Bullet> bulletList, List<Alien> alienList, Ship ship) : base(game)
         {
             this.spriteBatch = spriteBatch;
@@ -42,7 +58,13 @@ namespace finalGame
             
             //game.Components.Add()
         }
-
+        /// <summary>
+        /// Instatiate a new collision manager, but with only aliens and the ship
+        /// </summary>
+        /// <param name="game">The game that the collision manager is managing</param>
+        /// <param name="spriteBatch">The the spriteBatch</param>
+        /// <param name="alienList">the alient list</param>
+        /// <param name="ship">the ship</param>
         public CollisionManager(Game game, SpriteBatch spriteBatch, List<Alien> alienList, Ship ship) : base(game)
         {
             this.spriteBatch = spriteBatch;
@@ -56,7 +78,9 @@ namespace finalGame
 
             //game.Components.Add()
         }
-
+        /// <summary>
+        /// Hides explosions
+        /// </summary>
         public void hide()
         {
             if (explosionList.Count > 0)
@@ -68,19 +92,25 @@ namespace finalGame
                 }
             }
         }
-
+        /// <summary>
+        /// Mutes explosions
+        /// </summary>
         public void myMute()
         {
             mute = !mute;
         }
 
-
+        /// <summary>
+        /// Checks to see if bullets are colliding with aliens or with the player
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
-            //Manage bullets
+            
             foreach (Alien alien in alienList)
             {
                 Rectangle alienRect = alien.getBound();
+                // manages players bullets
                 if(bulletList != null)
                 {
                     foreach (Bullet bullet in bulletList)
@@ -111,6 +141,7 @@ namespace finalGame
                 }
                 else
                 {
+                    //Manages alien bullets
                     Rectangle shipRect = ship.getBound();
                     if(alien.BulletList != null)
                     {
