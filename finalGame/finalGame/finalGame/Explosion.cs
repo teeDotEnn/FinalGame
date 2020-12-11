@@ -9,6 +9,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace finalGame
 {
+    /// <summary>
+    /// Explosion class
+    /// </summary>
     public class Explosion : MyObject
     {
         private Vector2 dimension;
@@ -19,7 +22,13 @@ namespace finalGame
 
         private const int ROW = 5;
         private const int COL = 5;
-
+        /// <summary>
+        /// Instatiates a new explosion
+        /// </summary>
+        /// <param name="game">game</param>
+        /// <param name="spriteBatch">spritebatch</param>
+        /// <param name="tex">explosion sprite sheet</param>
+        /// <param name="position">position of the explosion</param>
         public Explosion(Game game, SpriteBatch spriteBatch, Texture2D tex, Vector2 position) : base(game)
         {
             SpriteBatch = spriteBatch;
@@ -30,18 +39,24 @@ namespace finalGame
             dimension = new Vector2(tex.Width / COL, tex.Height / ROW);
             createFrames();
         }
-
+        /// <summary>
+        /// Hides the explosion
+        /// </summary>
         public void hide()
         {
             Visible = false;
             Enabled = false;
         }
-
+        /// <summary>
+        /// Starts the explosion
+        /// </summary>
         public void start()
         {
             frameIndex = -1;
         }
-
+        /// <summary>
+        /// Creates frames based on the sprite sheet
+        /// </summary>
         private void createFrames()
         {
             frames = new List<Rectangle>();
@@ -56,7 +71,10 @@ namespace finalGame
                 }
             }
         }
-
+        /// <summary>
+        /// Draw the current frame
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Begin();
@@ -68,7 +86,10 @@ namespace finalGame
 
             base.Draw(gameTime);
         }
-
+        /// <summary>
+        /// Updates the counter increment the frame
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             delayCounter++;
