@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: MovingStars.cs
+ * Purpose: To give the background a parallax effect
+ * Rev History:
+ *          Created 2020-12-09
+ *          Stephen Draper
+
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +17,21 @@ using Microsoft.Xna.Framework.Input;
 
 namespace finalGame
 {
+    /// <summary>
+    /// The background class for our game
+    /// </summary>
     public class MovingStars : MyObject
     {
         private Vector2 position, position2;
         private int delay;
         private int delayCounter;
-
+        /// <summary>
+        /// Instiate a new background
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="spriteBatch"></param>
+        /// <param name="speed"></param>
+        /// <param name="position"></param>
         public MovingStars(Game game, SpriteBatch spriteBatch, Vector2 speed, Vector2 position) : base(game)
         {
             SpriteBatch = spriteBatch;
@@ -24,7 +41,10 @@ namespace finalGame
             Speed = speed;
             delay = 2;
         }
-
+        /// <summary>
+        /// Draw the backgrounds
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Begin();
@@ -33,7 +53,10 @@ namespace finalGame
             SpriteBatch.End();
             base.Draw(gameTime);
         }
-
+        /// <summary>
+        /// Move the backgrounds
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             delayCounter++;

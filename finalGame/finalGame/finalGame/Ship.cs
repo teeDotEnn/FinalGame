@@ -49,7 +49,10 @@ namespace finalGame
         }
 
        
-
+        /// <summary>
+        /// Draws the ship
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Begin();
@@ -57,7 +60,10 @@ namespace finalGame
             SpriteBatch.End();
             base.Draw(gameTime);
         }
-
+        /// <summary>
+        /// Checks for keyboard input and creates bullets
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             KeyboardState ks = Keyboard.GetState();

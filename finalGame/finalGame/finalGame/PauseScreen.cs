@@ -1,4 +1,13 @@
-﻿using System;
+﻿/* File: PauseScreen.cs
+ * Purpose: The pause scereen for the game
+ * Rev History:
+ *          Created 2020-12-09
+ *          Stephen Draper
+
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +18,22 @@ using Microsoft.Xna.Framework.Input;
 
 namespace finalGame
 {
-    class PauseScreen : GameScene
+    /// <summary>
+    /// The pause scene
+    /// </summary>
+    public class PauseScreen : GameScene
     {
         private MenuComponent menu;
+        /// <summary>
+        /// Menu componeents
+        /// </summary>
         public MenuComponent Menu { get => menu; set => menu = value; }
         private string[] menuItems = { "Resume Game", "Mute", "Quit" };
-
+        /// <summary>
+        /// instatiate a new game menu. Note that in this iteration, the menu items are fixed.
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="spriteBatch"></param>
         public PauseScreen(Game game, SpriteBatch spriteBatch) : base(game)
         {
             this.SpriteBatch = spriteBatch;
