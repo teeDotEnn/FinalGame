@@ -1,4 +1,13 @@
-﻿using System;
+﻿/* File: HelpScene.cs
+ * Purpose: To render a menu
+ * Rev History:
+ *          Created 2020-12-09
+ *          Stephen Draper
+
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +18,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace finalGame
 {
+    /// <summary>
+    /// Renders the help scene
+    /// </summary>
     public class HelpScene : GameScene
     {
         private Vector2 position;
@@ -18,7 +30,11 @@ namespace finalGame
         private Vector2 bodyPosition = new Vector2(25, 120);
         private int lineDisplacement;
 
-
+        /// <summary>
+        /// Instatiates a new help scene
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="spriteBatch"></param>
         public HelpScene(Game game, SpriteBatch spriteBatch) : base(game)
         {
             SpriteBatch = spriteBatch;
@@ -26,7 +42,10 @@ namespace finalGame
             fontHead = game.Content.Load<SpriteFont>("Fonts/HelpFontBold");
             position = new Vector2(50, 50);
         }
-
+        /// <summary>
+        /// Draws the help
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
             lineDisplacement = font.LineSpacing + 10;

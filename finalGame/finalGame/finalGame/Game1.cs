@@ -1,4 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿/* File: Game1.cs
+ * Purpose: The main game controller
+ * Rev History:
+ *          Created 2020-12-09
+ *          Stephen Draper
+
+ */
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;

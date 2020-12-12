@@ -1,4 +1,12 @@
-﻿using System;
+﻿/* File: HighscoreScene.cs
+ * Purpose: To render a menu
+ * Rev History:
+ *          Created 2020-12-09
+ *          Stephen Draper
+
+ */
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +18,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace finalGame
 {
+    /// <summary>
+    /// The class for displaying high schores
+    /// </summary>
     public class HighscoreScene : GameScene
     {
         private Game1 game;
@@ -21,8 +32,17 @@ namespace finalGame
         private List<string> nameList;
         private List<int> highscoreList;
         private int highscore;
+        const int HIGH_SCORE_INDEX = 1;
+        const int NAME_INDEX = 0;
+        /// <summary>
+        /// Highscore
+        /// </summary>
         public int Highscore { get => highscore; set => highscore = value; }
-
+        /// <summary>
+        /// Creates a new Highscore object
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="spriteBatch"></param>
         public HighscoreScene(Game game, SpriteBatch spriteBatch) : base(game)
         {
             this.game = (Game1)game;
@@ -36,7 +56,10 @@ namespace finalGame
         }
 
         
-
+        /// <summary>
+        /// Draws the high score list
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
             lineDisplacement = font.LineSpacing + 10;
@@ -56,11 +79,12 @@ namespace finalGame
             base.Draw(gameTime);
         }
 
+        /// <summary>
+        /// Loads in the high score list
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
-            
-            
-
             nameList.Clear();
             highscoreList.Clear();
 
@@ -70,8 +94,8 @@ namespace finalGame
                 foreach (string line in linesFromFile)
                 {
                     string[] fields = line.Split('|');
-                    nameList.Add(fields[0]);
-                    highscoreList.Add(int.Parse(fields[1]));
+                    nameList.Add(fields[NAME_INDEX]);
+                    highscoreList.Add(int.Parse(fields[HIGH_SCORE_INDEX]));
                 }
             }
 

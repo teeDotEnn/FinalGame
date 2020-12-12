@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* File: GameOverScene.cs
+ * Purpose: To render a menu
+ * Rev History:
+ *          Created 2020-12-09
+ *          Stephen Draper
+
+ */
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +17,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace finalGame
 {
+    /// <summary>
+    /// Render a gameOver scene
+    /// </summary>
     public class GameOverScene : GameScene
     {
         private SpriteFont font;
@@ -26,10 +36,18 @@ namespace finalGame
         private int initialIndex = 0;
         private bool finished = false;
         private bool returnToMain = false;
+        /// <summary>
+        /// Bool to see if the user wants to move back to the main menu
+        /// </summary>
         public bool ReturnToMain { get => returnToMain; set => returnToMain = value; }
         List<int> highscoreList = new List<int>();
         List<string> nameList = new List<string>();
-
+        /// <summary>
+        /// Creates a new game over scene
+        /// </summary>
+        /// <param name="game">game</param>
+        /// <param name="spriteBatch">spritebatch</param>
+        /// <param name="score">the user's score</param>
         public GameOverScene(Game game, SpriteBatch spriteBatch, int score) : base(game)
         {
             this.game = (Game1)game;
@@ -38,7 +56,10 @@ namespace finalGame
             fontHead = game.Content.Load<SpriteFont>("Fonts/HelpFontBold");
             this.score = score;
         }
-
+        /// <summary>
+        /// Draw the various options possible
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
             lineIncriment = fontHead.LineSpacing + 10;
@@ -65,7 +86,10 @@ namespace finalGame
             SpriteBatch.End();
             base.Draw(gameTime);
         }
-
+        /// <summary>
+        /// Checks to see if the user is typing, loads in the old file and updates the high score file
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             if(File.Exists(game.Filepath))
