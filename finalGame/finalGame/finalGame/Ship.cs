@@ -93,6 +93,15 @@ namespace finalGame
                 }
             }
             delayCounter++;
+
+            for (int i = 0; i < bulletList.Count; i++)
+            {
+                if(bulletList[i].Enabled == false && bulletList[i].Visible == false)
+                {
+                    bulletList.RemoveAt(i);
+                    i--;
+                }
+            }
             base.Update(gameTime);
         }
 

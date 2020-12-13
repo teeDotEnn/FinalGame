@@ -16,7 +16,7 @@ namespace finalGame
     public class CollisionManager : GameComponent
     {
         private SpriteBatch spriteBatch;
-        private List<Bullet> bulletList;
+        //private List<Bullet> bulletList;
         private List<Alien> alienList;
         private Ship ship;
         private Explosion explosion;
@@ -29,7 +29,7 @@ namespace finalGame
         /// <summary>
         /// The list of bullets
         /// </summary>
-        public List<Bullet> BulletList { get => bulletList; set => bulletList = value; }
+        //public List<Bullet> BulletList { get => bulletList; set => bulletList = value; }
         /// <summary>
         /// The list of aliens
         /// </summary>
@@ -48,7 +48,7 @@ namespace finalGame
         {
             this.spriteBatch = spriteBatch;
             this.game = game;
-            this.bulletList = ship.BulletList;
+            //this.bulletList = ship.BulletList;
             this.alienList = alienList;
             this.ship = ship;
 
@@ -111,9 +111,10 @@ namespace finalGame
             {
                 Rectangle alienRect = alien.getBound();
                 // manages players bullets
-                if(bulletList != null)
+                if(ship.BulletList.Count != 0)
                 {
-                    foreach (Bullet bullet in bulletList)
+                    Console.WriteLine($"Ship bullet count: {ship.BulletList.Count}");
+                    foreach (Bullet bullet in ship.BulletList)
                     {
                         Rectangle bulletRect = bullet.getBound();
                         if (bulletRect.Intersects(alienRect))
@@ -123,7 +124,7 @@ namespace finalGame
                             alien.Visible = false;
                             bullet.Enabled = false;
                             bullet.Visible = false;
-                            BulletList.Remove(bullet);
+                            ship.BulletList.Remove(bullet);
                             AlienList.Remove(alien);
 
                             explosion = new Explosion(game, spriteBatch, explosionTex, alien.Position);
