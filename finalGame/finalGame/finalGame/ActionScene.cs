@@ -159,7 +159,7 @@ namespace finalGame
             
             //Get the lists of aliens and bullets from the collision manager
             alienList = collisionManager.AlienList;
-            ourBulletsList = collisionManager.BulletList;
+            
             //check to see if all aliens are dead, and if the level needs to be incremented
             if (alienList.Count == 0)
             {
@@ -179,7 +179,6 @@ namespace finalGame
             }
            //Update collision manager lists
             collisionManager.AlienList = alienList;
-            collisionManager.BulletList = ship.BulletList;
             collisionManagerEnemy.AlienList = alienList;
 
             

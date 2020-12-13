@@ -48,7 +48,7 @@ namespace finalGame
         {
             this.spriteBatch = spriteBatch;
             this.game = game;
-            this.bulletList = bulletList;
+            this.bulletList = ship.BulletList;
             this.alienList = alienList;
             this.ship = ship;
 
