@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* File Name: CollisionManager.cs
+ * Purpose: Handles collisions between aliens, ships and their bullets
+ * Rev History: Created 2020-12-08
+ *                  Stephen Draper
+ * 
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

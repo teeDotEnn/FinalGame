@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* File Name: AsteroidCollisionManager.cs
+ * Purpose: checks for collisions between asteroids and the ship
+ * Rev History: Created 2020-12-10
+ *                  Stephen Draper
+ * 
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

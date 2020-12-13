@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* File Name: Bullet.cs
+ * Purpose: Contains logic for bullets
+ * Rev History: Created 2020-12-08
+ *                  Stephen Draper
+ * 
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

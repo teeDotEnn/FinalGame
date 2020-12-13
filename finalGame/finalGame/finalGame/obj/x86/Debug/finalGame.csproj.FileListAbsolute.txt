@@ -86,3 +86,7 @@ C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\bulletYellowSmall.xnb
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\Meteor1.xnb
 C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\Content\Images\meteorSmall.xnb
+C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\finalGame.exe.manifest
+C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\bin\Windows\x86\Debug\finalGame.application
+C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\obj\x86\Debug\finalGame.exe.manifest
+C:\Users\Tim\repos\FinalGame\finalGame\finalGame\finalGame\obj\x86\Debug\finalGame.application
